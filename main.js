@@ -20,18 +20,26 @@ const houses = [
     }
 ];
 
-const studentNameElem = document.getElementbyId('student-name');
+const studentNameElem = document.getElementById('student-name');
 const sortButtonElem = document.getElementById('sort-button');
+const startButtonElem = document.getElementById('start-button');
+const jumbotron = document.getElementById('jumbo');
+const nameInput = document.getElementById('name-input');
+
 
 
 const printToDom = (stringToPrint, divId) => {
     const selectedDiv = document.getElementById(divId);
-    selectedDiv.innerHTML = stringToPrint;
+    selectedDiv.innerHTML += stringToPrint;
 };
 
 const buildNewStudentCard = (studentName) => {
-    let domString = `<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="" alt="">
+    let domString = '';
+    let randomize = Math.floor((Math.random() * houses.length));
+    let house = houses[randomize].name;
+    let houseImg = houses[randomize].image;
+    domString += `<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="${houseImg}" alt="">
     <div class="card-body">
         <h5 class="card-name">${studentName}</h5>
         <h6 class="card-house">${house}</p>
@@ -39,16 +47,16 @@ const buildNewStudentCard = (studentName) => {
     </div>
 </div>`;
 
-    printToDom(domString, 'toDoCards');
-    activateDeletes();
+    printToDom(domString, 'card-div');
+    // activateDeletes();
 };
-
-
-
-let randomize = Math.floor((Math.random() * houses.length));
-let house ='';
 
 sortButtonElem.addEventListener('click', (e) => {
     e.preventDefault();
-    buildNewStudentCard(studentNameElem.values);
+    buildNewStudentCard(studentNameElem.value);
+});
+
+startButtonElem.addEventListener('click', (e) => {
+    e.preventDefault();
+    ;
 });
