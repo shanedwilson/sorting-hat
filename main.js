@@ -38,7 +38,7 @@ const buildNewStudentCard = () => {
     let randomize = Math.floor((Math.random() * houses.length));
     let house = houses[randomize].name;
     let houseImg = houses[randomize].image;
-    domString += `<div class="card d-flex row justify-content-center m-2" style="width: 18rem;">
+    domString += `<div class="card d-flex row justify-content-center m-2" style="width: 10rem;">
         <img class="card-img-top" src="${houseImg}" alt="${house}">
         <div class="card-body text-center">
             <h5 class="card-name">${studentName}</h5>
