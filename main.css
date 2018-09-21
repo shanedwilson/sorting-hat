@@ -13,3 +13,11 @@ body {
 #jumbo-div {
     margin-top: 100px;
 }
+
+#name-input {
+    background-color: lightgray;
+}
+
+#student h3 {
+    text-align: center;
+}
