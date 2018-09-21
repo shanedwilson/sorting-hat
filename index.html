@@ -10,14 +10,18 @@
 </head>
 <body>
 
-    <div class="jumbotron" id='jumbo' style=''>
+    <div class = "d-flex row justify-content-center h-100" id='jumbo-div'>
+        <div class="jumbotron my-auto" id='jumbo' style=''>
             <h1 class="display-4">The Hogwarts Sorting Hat</h1>
-            <p class="lead">Enchanted hat that once belonged to Godric Gryffindor and sorts students into Hogwarts houses.</p>
+            <p class="lead">An enchanted hat that once belonged to Godric Gryffindor and sorts students into Hogwarts houses.</p>
             <hr class="my-4">
-            <p>The hat sorts students into one of the four Hogwarts houses.</p>
-            <p>Click the button below and let's start sorting students!</p>
-            <a id='start-button' class="btn btn-primary btn-lg" href="#" role="button">Let's Start Sorting!</a>
-    </div>
+            <p class='d-flex justify-content-center'>The hat sorts students into one of the four Hogwarts houses.</p>
+            <p class='d-flex justify-content-center'>Click the button below and let's start sorting students!</p>
+            <div class='d-flex justify-content-center'>
+                <button id='start-button' class="btn btn-primary btn-lg">Let's Start Sorting!</button>
+            </div>    
+        </div>
+    </div>    
 
     <form id='name-input'style='display:none'>
         <div class="student-form">

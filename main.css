@@ -1,7 +1,17 @@
 body {
     background-color: aqua;
+    height: 100%;
 }
 
 h1 {
     text-align: center;
 }
+
+/* .jumbo-div {
+    position: relative;
+}
+
+.jumbo {
+    position: absolute;
+    top: 50%;
+} */
