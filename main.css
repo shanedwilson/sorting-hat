@@ -1,17 +1,15 @@
 body {
     background-color: aqua;
     height: 100%;
+    background-image: url("https://jovemnerd.com.br/wp-content/uploads/2017/09/castle-760x428.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-h1 {
+#jumbo-div h1 {
     text-align: center;
 }
 
-/* .jumbo-div {
-    position: relative;
+#jumbo-div {
+    margin-top: 100px;
 }
-
-.jumbo {
-    position: absolute;
-    top: 50%;
-} */
