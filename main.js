@@ -25,6 +25,7 @@ const sortButtonElem = document.getElementById('sort-button');
 const startButtonElem = document.getElementById('start-button');
 const jumbotron = document.getElementById('jumbo');
 const nameInput = document.getElementById('name-input');
+const expelButtonElem = document.getElementById('expel');
 
 
 
@@ -43,12 +44,28 @@ const buildNewStudentCard = (studentName) => {
     <div class="card-body">
         <h5 class="card-name">${studentName}</h5>
         <h6 class="card-house">${house}</p>
-        <a href="#" class="btn btn-danger">EXPEL</a>
+        <button type="button" class="expel-button btn btn-danger" id="expel">EXPEL</button>
     </div>
 </div>`;
 
     printToDom(domString, 'card-div');
-    // activateDeletes();
+    studentNameElem.value = '';
+    activateExpel();
+};
+
+const activateExpel = () => {
+    const expelButtons = document.getElementsByClassName('expel-button');
+
+    for (let i = 0; i < expelButtons.length; i++) {
+        const element = expelButtons[i];
+        element.addEventListener('click', (e) => {
+            // card that button was on
+            const buttonClicked = e.target;
+            // .parentNode.remove
+            console.log(buttonClicked);
+            buttonClicked.parentNode.parentNode.parentNode.remove();
+        })
+    }
 };
 
 sortButtonElem.addEventListener('click', (e) => {
@@ -58,5 +75,6 @@ sortButtonElem.addEventListener('click', (e) => {
 
 startButtonElem.addEventListener('click', (e) => {
     e.preventDefault();
-    ;
+    jumbotron.setAttribute('style', 'display:none');
+    nameInput.setAttribute('style', 'dispaly:block');
 });
