@@ -1,1 +1,3 @@
-console.log('hello');
+const houses = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
+
+console.log(houses);
