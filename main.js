@@ -21,6 +21,7 @@ const houses = [
 ];
 
 const studentNameElem = document.getElementById('student-name');
+const studentName = studentNameElem.value;
 const sortButtonElem = document.getElementById('sort-button');
 const startButtonElem = document.getElementById('start-button');
 const jumbotron = document.getElementById('jumbo');
@@ -40,14 +41,13 @@ const buildNewStudentCard = (studentName) => {
     let house = houses[randomize].name;
     let houseImg = houses[randomize].image;
     domString += `<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="${houseImg}" alt="">
-    <div class="card-body">
-        <h5 class="card-name">${studentName}</h5>
-        <h6 class="card-house">${house}</p>
-        <button type="button" class="expel-button btn btn-danger" id="expel">EXPEL</button>
-    </div>
-</div>`;
-
+        <img class="card-img-top" src="${houseImg}" alt="">
+        <div class="card-body">
+            <h5 class="card-name">${studentName}</h5>
+            <h6 class="card-house">${house}</p>
+            <button type="button" class="expel-button btn btn-danger" id="expel">EXPEL</button>
+        </div>
+    </div>`;
     printToDom(domString, 'card-div');
     studentNameElem.value = '';
     activateExpel();
@@ -59,10 +59,7 @@ const activateExpel = () => {
     for (let i = 0; i < expelButtons.length; i++) {
         const element = expelButtons[i];
         element.addEventListener('click', (e) => {
-            // card that button was on
             const buttonClicked = e.target;
-            // .parentNode.remove
-            console.log(buttonClicked);
             buttonClicked.parentNode.parentNode.parentNode.remove();
         })
     }
@@ -70,7 +67,7 @@ const activateExpel = () => {
 
 sortButtonElem.addEventListener('click', (e) => {
     e.preventDefault();
-    buildNewStudentCard(studentNameElem.value);
+    buildNewStudentCard(studentName);
 });
 
 startButtonElem.addEventListener('click', (e) => {
