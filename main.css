@@ -1,5 +1,5 @@
 body {
-    background-color: aqua;
+    background-color: rgb(4, 1, 150);
     height: 100%;
     background-image: url("https://jovemnerd.com.br/wp-content/uploads/2017/09/castle-760x428.jpg");
     background-repeat: no-repeat;
@@ -13,3 +13,23 @@ body {
 #jumbo-div {
     margin-top: 100px;
 }
+
+#name-input {
+    background-color: lightgray;
+}
+
+#student h3 {
+    text-align: center;
+}
+
+/* #cards {
+    border: solid pink;
+    display: flex
+}
+
+#card-div {
+    border: solid green;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+} */
