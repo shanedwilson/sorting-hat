@@ -20,6 +20,13 @@ const houses = [
     }
 ];
 
+const voldemort = [
+    {
+        name: 'Voldemort',
+        image: 'https://www.hp-lexicon.org/wp-content/uploads/2016/01/lord-voldemort.jpg'
+    }
+];
+
 const studentNameElem = document.getElementById('student-name');
 const sortButtonElem = document.getElementById('sort-button');
 const startButtonElem = document.getElementById('start-button');
@@ -51,6 +58,19 @@ const buildNewStudentCard = () => {
     activateExpel();
 };
 
+const buildVoldemortCard = (studentName) => {
+    let domString = '';
+    let image = voldemort[0].image
+    domString += `<div class="card d-flex row justify-content-center m-2" style="width: 10rem;">
+        <img class="card-img-top" src="${image}" alt="Voldemort">
+        <div class="card-body text-center">
+            <h5 class="card-name">${studentName}</h5>
+            <h6 class="card-house">Voldemort's Army</p>
+        </div>
+    </div>`;
+    printToDom(domString, 'voldemort-div');    
+}
+
 const activateExpel = () => {
     const expelButtons = document.getElementsByClassName('expel-button');
 
@@ -58,7 +78,8 @@ const activateExpel = () => {
         const element = expelButtons[i];
         element.addEventListener('click', (e) => {
             const buttonClicked = e.target;
-            buttonClicked.parentNode.parentNode.parentNode.remove();
+        let studentName = buttonClicked.parentNode.parentNode.innerHTML;
+            buildVoldemortCard(studentName);
         })
     }
 };
@@ -73,3 +94,8 @@ startButtonElem.addEventListener('click', (e) => {
     jumbotron.setAttribute('style', 'display:none');
     nameInput.setAttribute('style', 'dispaly:block');
 });
+
+// expelButtonElem.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     buildVoldermortCard();
+// });
