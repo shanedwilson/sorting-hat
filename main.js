@@ -41,6 +41,9 @@ const printToDom = (stringToPrint, divId) => {
 
 const buildNewStudentCard = () => {
     const studentName = studentNameElem.value;
+    if (studentName === '') {
+        alert("Please enter your name.")
+    } else {
     let domString = '';
     let randomize = Math.floor((Math.random() * houses.length));
     let house = houses[randomize].name;
@@ -56,6 +59,7 @@ const buildNewStudentCard = () => {
     printToDom(domString, 'card-div');
     activateExpel();
     studentNameElem.value = '';
+    }
 };
 
 const buildVoldemortCard = (studentName) => {
