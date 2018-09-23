@@ -71,17 +71,19 @@ const buildNewStudentCard = () => {
 };
 
 const buildVoldemortCard = (studentName) => {
-    let newString = '';
-    let image = voldemort[0].image
-    newString += `<div class=" voldemort card d-flex row justify-content-center m-2" style="width: 10rem;">
-        <img class="card-img-top" src="${image}" alt="Voldemort">
+    let houseImage = voldemort[0].image;
+    voltStudents.push({studentName});
+    const sortedVoltStudents = voltStudents.sort((a, b) => a.studentName > b.studentName);
+    const newString = sortedVoltStudents.map(student => `
+        <div class=" voldemort card d-flex row justify-content-center m-2" style="width: 10rem;">
+        <img class="card-img-top" src="${houseImage}" alt="Voldemort">
         <div class="card-body text-center">
-            <h5 class="card-name">${studentName}</h5>
+            <h5 class="card-name">${student.studentName}</h5>
             <h6 class="card-house">Voldemort's Army</h6>
         </div>
-    </div>`;
-    printToDom2(newString, 'voldemort-div');    
-}
+    </div>`);
+    printToDom(newString, 'voldemort-div');    
+};
 
 const activateExpel = () => {
     const expelButtons = document.getElementsByClassName('expel-button');
