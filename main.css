@@ -12,6 +12,11 @@ body {
 
 #jumbo-div {
     margin-top: 100px;
+    font-family: Ubuntu;
+}
+
+#jumbo-low {
+    font-family:Vollkorn;
 }
 
 #name-input {
@@ -21,15 +26,3 @@ body {
 #student h3 {
     text-align: center;
 }
-
-/* #cards {
-    border: solid pink;
-    display: flex
-}
-
-#card-div {
-    border: solid green;
-    flex-wrap: wrap;
-    flex-direction: row;
-
-} */

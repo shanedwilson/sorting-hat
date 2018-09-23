@@ -20,6 +20,13 @@ const houses = [
     }
 ];
 
+const voldemort = [
+    {
+        name: 'Voldemort',
+        image: 'https://www.hp-lexicon.org/wp-content/uploads/2016/01/lord-voldemort.jpg'
+    }
+];
+
 const studentNameElem = document.getElementById('student-name');
 const sortButtonElem = document.getElementById('sort-button');
 const startButtonElem = document.getElementById('start-button');
@@ -42,14 +49,27 @@ const buildNewStudentCard = () => {
         <img class="card-img-top" src="${houseImg}" alt="${house}">
         <div class="card-body text-center">
             <h5 class="card-name">${studentName}</h5>
-            <h6 class="card-house">${house}</p>
+            <h6 class="card-house">${house}</h6>
             <button type="button" class="expel-button btn btn-danger" id="expel">EXPEL</button>
         </div>
     </div>`;
     printToDom(domString, 'card-div');
-    studentNameElem.value = '';
     activateExpel();
+    studentNameElem.value = '';
 };
+
+const buildVoldemortCard = (studentName) => {
+    let newString = '';
+    let image = voldemort[0].image
+    newString += `<div class="card d-flex row justify-content-center m-2" style="width: 10rem;">
+        <img class="card-img-top" src="${image}" alt="Voldemort">
+        <div class="card-body text-center">
+            <h5 class="card-name">${studentName}</h5>
+            <h6 class="card-house">Voldemort's Army</h6>
+        </div>
+    </div>`;
+    printToDom(newString, 'voldemort-div');    
+}
 
 const activateExpel = () => {
     const expelButtons = document.getElementsByClassName('expel-button');
@@ -58,7 +78,10 @@ const activateExpel = () => {
         const element = expelButtons[i];
         element.addEventListener('click', (e) => {
             const buttonClicked = e.target;
-            buttonClicked.parentNode.parentNode.parentNode.remove();
+        let studentName = buttonClicked.previousElementSibling.previousElementSibling.innerHTML;
+        console.log(studentName);
+        buttonClicked.parentNode.parentNode.parentNode.remove();
+            buildVoldemortCard(studentName);
         })
     }
 };
