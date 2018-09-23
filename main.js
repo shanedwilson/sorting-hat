@@ -33,8 +33,15 @@ const startButtonElem = document.getElementById('start-button');
 const jumbotron = document.getElementById('jumbo');
 const nameInput = document.getElementById('name-input');
 const expelButtonElem = document.getElementById('expel');
+const students = [];
+const voltStudents = [];
 
 const printToDom = (stringToPrint, divId) => {
+    const selectedDiv = document.getElementById(divId);
+    selectedDiv.innerHTML = stringToPrint;
+};
+
+const printToDom2 = (stringToPrint, divId) => {
     const selectedDiv = document.getElementById(divId);
     selectedDiv.innerHTML += stringToPrint;
 };
@@ -44,18 +51,19 @@ const buildNewStudentCard = () => {
     if (studentName === '') {
         alert("Please enter your name.")
     } else {
-    let domString = '';
-    let randomize = Math.floor((Math.random() * houses.length));
-    let house = houses[randomize].name;
-    let houseImg = houses[randomize].image;
-    domString += `<div class="card d-flex row justify-content-center m-2" style="width: 10rem;">
-        <img class="card-img-top" src="${houseImg}" alt="${house}">
-        <div class="card-body text-center">
-            <h5 class="card-name">${studentName}</h5>
-            <h6 class="card-house">${house}</h6>
-            <button type="button" class="expel-button btn btn-danger" id="expel">EXPEL</button>
-        </div>
-    </div>`;
+        let randomize = Math.floor((Math.random() * houses.length));
+        let house = houses[randomize].name;
+        let houseImg = houses[randomize].image;
+        students.push({house, houseImg, studentName});
+        const sortedStudents = students.sort((a, b) => a.studentName > b.studentName);
+        const domString = sortedStudents.map(student => `<div class="${student.house} card d-flex row justify-content-center m-2" style="width: 10rem;">
+            <img class="card-img-top" src="${student.houseImg}" alt="${student.house}">
+            <div class="card-body text-center">
+                <h5 class="card-name">${student.studentName}</h5>
+                <h6 class="card-house">${student.house}</h6>
+                <button type="button" class="expel-button btn btn-danger" id="expel">EXPEL</button>
+            </div>
+        </div>`);
     printToDom(domString, 'card-div');
     activateExpel();
     studentNameElem.value = '';
@@ -65,26 +73,25 @@ const buildNewStudentCard = () => {
 const buildVoldemortCard = (studentName) => {
     let newString = '';
     let image = voldemort[0].image
-    newString += `<div class="card d-flex row justify-content-center m-2" style="width: 10rem;">
+    newString += `<div class=" voldemort card d-flex row justify-content-center m-2" style="width: 10rem;">
         <img class="card-img-top" src="${image}" alt="Voldemort">
         <div class="card-body text-center">
             <h5 class="card-name">${studentName}</h5>
             <h6 class="card-house">Voldemort's Army</h6>
         </div>
     </div>`;
-    printToDom(newString, 'voldemort-div');    
+    printToDom2(newString, 'voldemort-div');    
 }
 
 const activateExpel = () => {
     const expelButtons = document.getElementsByClassName('expel-button');
-
     for (let i = 0; i < expelButtons.length; i++) {
         const element = expelButtons[i];
         element.addEventListener('click', (e) => {
             const buttonClicked = e.target;
         let studentName = buttonClicked.previousElementSibling.previousElementSibling.innerHTML;
         buttonClicked.parentNode.parentNode.remove();
-            buildVoldemortCard(studentName);
+        buildVoldemortCard(studentName);
         })
     }
 };
