@@ -59,16 +59,16 @@ const buildNewStudentCard = () => {
 };
 
 const buildVoldemortCard = (studentName) => {
-    let domString = '';
+    let newString = '';
     let image = voldemort[0].image
-    domString += `<div class="card d-flex row justify-content-center m-2" style="width: 10rem;">
+    newString += `<div class="card d-flex row justify-content-center m-2" style="width: 10rem;">
         <img class="card-img-top" src="${image}" alt="Voldemort">
         <div class="card-body text-center">
             <h5 class="card-name">${studentName}</h5>
             <h6 class="card-house">Voldemort's Army</p>
         </div>
     </div>`;
-    printToDom(domString, 'voldemort-div');    
+    printToDom(newString, 'voldemort-div');    
 }
 
 const activateExpel = () => {
