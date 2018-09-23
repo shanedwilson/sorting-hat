@@ -54,8 +54,8 @@ const buildNewStudentCard = () => {
         </div>
     </div>`;
     printToDom(domString, 'card-div');
-    studentNameElem.value = '';
     activateExpel();
+    studentNameElem.value = '';
 };
 
 const buildVoldemortCard = (studentName) => {
@@ -78,7 +78,9 @@ const activateExpel = () => {
         const element = expelButtons[i];
         element.addEventListener('click', (e) => {
             const buttonClicked = e.target;
-        let studentName = buttonClicked.parentNode.parentNode.innerHTML;
+        let studentName = buttonClicked.getElementsByClassName('card-name').innerHTML;
+        console.log(studentName);
+        buttonClicked.parentNode.parentNode.parentNode.remove();
             buildVoldemortCard(studentName);
         })
     }
@@ -94,8 +96,3 @@ startButtonElem.addEventListener('click', (e) => {
     jumbotron.setAttribute('style', 'display:none');
     nameInput.setAttribute('style', 'dispaly:block');
 });
-
-// expelButtonElem.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     buildVoldermortCard();
-// });
