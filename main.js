@@ -84,7 +84,7 @@ const activateExpel = () => {
             const buttonClicked = e.target;
         let studentName = buttonClicked.previousElementSibling.previousElementSibling.innerHTML;
         console.log(studentName);
-        buttonClicked.parentNode.parentNode.parentNode.remove();
+        buttonClicked.parentNode.parentNode.remove();
             buildVoldemortCard(studentName);
         })
     }
