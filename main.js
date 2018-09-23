@@ -49,7 +49,7 @@ const buildNewStudentCard = () => {
         <img class="card-img-top" src="${houseImg}" alt="${house}">
         <div class="card-body text-center">
             <h5 class="card-name">${studentName}</h5>
-            <h6 class="card-house">${house}</p>
+            <h6 class="card-house">${house}</h6>
             <button type="button" class="expel-button btn btn-danger" id="expel">EXPEL</button>
         </div>
     </div>`;
@@ -65,7 +65,7 @@ const buildVoldemortCard = (studentName) => {
         <img class="card-img-top" src="${image}" alt="Voldemort">
         <div class="card-body text-center">
             <h5 class="card-name">${studentName}</h5>
-            <h6 class="card-house">Voldemort's Army</p>
+            <h6 class="card-house">Voldemort's Army</h6>
         </div>
     </div>`;
     printToDom(newString, 'voldemort-div');    
@@ -78,7 +78,7 @@ const activateExpel = () => {
         const element = expelButtons[i];
         element.addEventListener('click', (e) => {
             const buttonClicked = e.target;
-        let studentName = buttonClicked.getElementsByClassName('card-name').innerHTML;
+        let studentName = buttonClicked.previousElementSibling.previousElementSibling.innerHTML;
         console.log(studentName);
         buttonClicked.parentNode.parentNode.parentNode.remove();
             buildVoldemortCard(studentName);
