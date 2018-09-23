@@ -48,7 +48,7 @@ const buildNewStudentCard = () => {
     let randomize = Math.floor((Math.random() * houses.length));
     let house = houses[randomize].name;
     let houseImg = houses[randomize].image;
-    domString += `<div class="card d-flex row justify-content-center m-2" style="width: 10rem;">
+    domString += `<div class="${house} card d-flex row justify-content-center m-2" style="width: 10rem;">
         <img class="card-img-top" src="${houseImg}" alt="${house}">
         <div class="card-body text-center">
             <h5 class="card-name">${studentName}</h5>
@@ -58,6 +58,7 @@ const buildNewStudentCard = () => {
     </div>`;
     printToDom(domString, 'card-div');
     activateExpel();
+    ordering();
     studentNameElem.value = '';
     }
 };
@@ -65,7 +66,7 @@ const buildNewStudentCard = () => {
 const buildVoldemortCard = (studentName) => {
     let newString = '';
     let image = voldemort[0].image
-    newString += `<div class="card d-flex row justify-content-center m-2" style="width: 10rem;">
+    newString += `<div class=" voldemort card d-flex row justify-content-center m-2" style="width: 10rem;">
         <img class="card-img-top" src="${image}" alt="Voldemort">
         <div class="card-body text-center">
             <h5 class="card-name">${studentName}</h5>
@@ -83,12 +84,26 @@ const activateExpel = () => {
         element.addEventListener('click', (e) => {
             const buttonClicked = e.target;
         let studentName = buttonClicked.previousElementSibling.previousElementSibling.innerHTML;
-        console.log(studentName);
-        buttonClicked.parentNode.parentNode.parentNode.remove();
+        buttonClicked.parentNode.parentNode.remove();
             buildVoldemortCard(studentName);
         })
     }
 };
+
+const ordering = () => {
+    let cardArray = document.getElementsByClassName('card');
+    // cardArray.sort();
+    let cardHouses = '';
+    let houseArray = [];
+    for (let i = 0; i < cardArray.length; i++) {
+        cardHouses = (cardArray[i].getElementsByClassName('card-house')[0].innerText);
+        houseArray.push(cardHouses);
+        houseArray.sort();
+    }
+    console.log(cardArray);
+    console.log(houseArray);
+    console.log(cardHouses);
+}
 
 sortButtonElem.addEventListener('click', (e) => {
     e.preventDefault();
