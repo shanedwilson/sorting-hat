@@ -23,9 +23,9 @@ HTML and JS have proper indentations
 ## Screenshots
 
 ​![main screenshot](./images/sorting-main.png)
-![second screenshot](.images/sorting-page2.png)
-![third screenshot](.images/sorting-page3.png)
-![fourth screenshot](.images/sorting-page4.png)
+![second screenshot](./images/sorting-page2.png)
+![third screenshot](./images/sorting-page3.png)
+![fourth screenshot](./images/sorting-page4.png)
 
 ## How to run this project:
 
