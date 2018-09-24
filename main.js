@@ -41,11 +41,6 @@ const printToDom = (stringToPrint, divId) => {
     selectedDiv.innerHTML = stringToPrint;
 };
 
-const printToDom2 = (stringToPrint, divId) => {
-    const selectedDiv = document.getElementById(divId);
-    selectedDiv.innerHTML += stringToPrint;
-};
-
 const buildNewStudentCard = () => {
     const studentName = studentNameElem.value;
     if (studentName === '') {
@@ -91,8 +86,10 @@ const activateExpel = () => {
         const element = expelButtons[i];
         element.addEventListener('click', (e) => {
             const buttonClicked = e.target;
+            let index = e.target.getAttribute('value');
             let studentName = buttonClicked.previousElementSibling.previousElementSibling.innerHTML;
             buttonClicked.parentNode.parentNode.remove();
+            students.splice(index, 1);
             buildVoldemortCard(studentName);
         })
     }
