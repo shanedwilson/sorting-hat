@@ -41,11 +41,6 @@ const printToDom = (stringToPrint, divId) => {
     selectedDiv.innerHTML = stringToPrint;
 };
 
-const printToDom2 = (stringToPrint, divId) => {
-    const selectedDiv = document.getElementById(divId);
-    selectedDiv.innerHTML += stringToPrint;
-};
-
 const buildNewStudentCard = () => {
     const studentName = studentNameElem.value;
     if (studentName === '') {
