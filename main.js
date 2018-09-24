@@ -91,9 +91,9 @@ const activateExpel = () => {
         const element = expelButtons[i];
         element.addEventListener('click', (e) => {
             const buttonClicked = e.target;
-        let studentName = buttonClicked.previousElementSibling.previousElementSibling.innerHTML;
-        buttonClicked.parentNode.parentNode.remove();
-        buildVoldemortCard(studentName);
+            let studentName = buttonClicked.previousElementSibling.previousElementSibling.innerHTML;
+            buttonClicked.parentNode.parentNode.remove();
+            buildVoldemortCard(studentName);
         })
     }
 };
