@@ -50,15 +50,16 @@ const buildNewStudentCard = () => {
         let house = houses[randomize].name;
         let houseImg = houses[randomize].image;
         students.push({house, houseImg, studentName});
-        const sortedStudents = students.sort((a, b) => a.studentName > b.studentName);
-        const domString = sortedStudents.map(student => `<div class="${student.house} card d-flex row justify-content-center m-2" style="width: 10rem;">
+        const sortedStudents = students.sort((a, b) => a.studentName - b.studentName);
+        let domString = '';
+        sortedStudents.forEach((student) => {domString += `<div class="${student.house} card d-flex row justify-content-center m-2" style="width: 10rem;">
             <img class="card-img-top" src="${student.houseImg}" alt="${student.house}">
             <div class="card-body text-center">
                 <h5 class="card-name">${student.studentName}</h5>
                 <h6 class="card-house">${student.house}</h6>
                 <button type="button" class="expel-button btn btn-danger" id="expel">EXPEL</button>
             </div>
-        </div>`);
+        </div>`});
     printToDom(domString, 'card-div');
     activateExpel();
     studentNameElem.value = '';
