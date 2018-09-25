@@ -22,12 +22,21 @@ body {
 }
 
 #name-input {
+    width: 90%;
+}
+
+#name-input {
     background-color: lightgray;
 }
 
 #student h3 {
     text-align: center;
     font-size: 1em;
+}
+
+#student-name {
+    display: flex;
+    align-self: center;
 }
 
 @media only screen and (min-width: 992px) {
@@ -38,5 +47,9 @@ body {
     #student h3 {
         text-align: center;
         font-size: 2em;
+    }
+
+    #name-input {
+        width: 50%!important;
     }
 }
